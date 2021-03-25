@@ -3,8 +3,12 @@ package com.example.assignmentandroid;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 else
                 {
                     try {
-                        if(countryRepository.getAll().size() > 0)
+                        if(countryRepository.getAll()!=null)
                         {
                             List<Country> countries = extractDataFromDatabase();
                             RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("", "Number of countries received: ");
                 try {
-                    if(countryRepository.getAll().size() > 0)
+                    if(countryRepository.getAll() != null)
                     {
                         List<Country> countries = extractDataFromDatabase();
                         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -148,5 +152,19 @@ public class MainActivity extends AppCompatActivity {
         return countries;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity_menu,menu);
+        return true;
+    }
 
+   public void delete (MenuItem item)
+    {
+        countryRepository.Delete();
+        recreate();
+    }
+    public void refresh(MenuItem item)
+    {
+        recreate();
+    }
 }
