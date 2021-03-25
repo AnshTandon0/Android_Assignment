@@ -18,6 +18,11 @@ public class Country extends BaseCountry {
         this.languages = languages;
     }
 
+    public Country()
+    {
+
+    }
+
     public String getFlag() {
         return flag;
     }

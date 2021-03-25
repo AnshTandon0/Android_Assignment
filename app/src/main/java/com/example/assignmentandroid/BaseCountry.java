@@ -36,6 +36,11 @@ public class BaseCountry {
         this.borders = borders;
     }
 
+    public BaseCountry()
+    {
+
+    }
+
     public String getName() {
         return name;
     }
