@@ -25,7 +25,7 @@ public abstract class CountryDatabase extends RoomDatabase {
     private static CountryDatabase buildDatabase( Context context )
     {
         return Room.databaseBuilder(context,CountryDatabase.class,"database")
-                .allowMainThreadQueries()
+                //.allowMainThreadQueries()
                 .build();
     }
 }
